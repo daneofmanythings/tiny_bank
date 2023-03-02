@@ -29,8 +29,8 @@ class Transactions(ABC) :
 
     @abstractclassmethod
     def deliver_transaction(cls, confirmation_code:str) -> Transaction :
-        '''Takes a conformation code and returns the transaction object that
-        corresponds to the code from the LEDGER.'''
+        '''Takes a conformation code and returns the corresponding
+         transaction object from the LEDGER.'''
         pass
     
     @abstractclassmethod
