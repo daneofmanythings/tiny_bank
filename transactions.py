@@ -4,7 +4,7 @@ from datetime import datetime
 from enum import Enum
 
 
-class CustOpers(Enum) :
+class CustActions(Enum) :
     DEPOSIT = 'D'
     WITHDRAW = 'W'
     INTEREST = 'I'

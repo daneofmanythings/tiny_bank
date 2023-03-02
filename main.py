@@ -1,5 +1,5 @@
 from accounts import CustomerAccount
-from transactions import CustOpers
+from transactions import CustActions
 
 
 if __name__ == "__main__" :
@@ -16,7 +16,7 @@ if __name__ == "__main__" :
     # for account in accounts._accounts :
     #     print(account.balance)
     
-    confirmation_code = dave.transaction(CustOpers.WITHDRAW,100)
+    confirmation_code = dave.transaction(CustActions.WITHDRAW,100)
     print(confirmation_code)
 
     for transaction in transactions.LEDGER.values() :

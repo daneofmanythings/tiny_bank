@@ -1,5 +1,5 @@
 from datetime import timezone, timedelta
-from transactions import CustomerTransactions, CustOpers
+from transactions import CustomerTransactions, CustActions
 
 
 class CustomerAccounts :
@@ -15,7 +15,7 @@ class CustomerAccounts :
     def apply_interest(cls) :
         for account in cls.ACCOUNT_LIST :
             value = cls.INTEREST * account.balance
-            account.transaction(CustOpers.INTEREST, value)
+            account.transaction(CustActions.INTEREST, value)
 
     @classmethod
     def get_interest_rate(cls) :
@@ -93,26 +93,26 @@ class CustomerAccount :
     def _deposit(self, value) :
         if value > 0 :
             self._balance += value
-            return CustOpers.DEPOSIT.value
+            return CustActions.DEPOSIT.value
         else :
-            return CustOpers.DECLINED.value
+            return CustActions.DECLINED.value
 
     def _interest(self, value) :
         self._balance += value
-        return CustOpers.INTEREST.value
+        return CustActions.INTEREST.value
     
     def _withdraw(self, value) :
         if value > 0 and self.balance >= value:
             self._balance -= value
-            return CustOpers.WITHDRAW.value
+            return CustActions.WITHDRAW.value
         else :
-            return CustOpers.DECLINED.value
+            return CustActions.DECLINED.value
         
     def transaction(self, transaction_type, value) -> None:
         operations = {
-            CustOpers.DEPOSIT: self._deposit,
-            CustOpers.WITHDRAW: self._withdraw,
-            CustOpers.INTEREST: self._interest,
+            CustActions.DEPOSIT: self._deposit,
+            CustActions.WITHDRAW: self._withdraw,
+            CustActions.INTEREST: self._interest,
         }
         action = operations[transaction_type]
         return self.TRANSACTIONS.process_transaction(self, action, value)
