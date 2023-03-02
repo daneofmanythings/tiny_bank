@@ -88,7 +88,7 @@ class CustomerAccount :
         if -12 <= delta <= 14 :
             self._timezone =  timezone(timedelta(hours=delta), tzname)
         else :
-            raise ValueError('Time offset needs to be between -24 and 24') 
+            raise ValueError('Time offset needs to be between -12 and 14') 
 
     def _deposit(self, value) :
         if value > 0 :
