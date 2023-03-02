@@ -22,6 +22,6 @@ if __name__ == "__main__" :
     for transaction in transactions.LEDGER.values() :
         print(transaction)
 
-    withdrawl_receipt = transactions.deliver_transaction(confirmation_code)
+    withdrawl_receipt = transactions.retrieve_transaction(confirmation_code)
 
     print(withdrawl_receipt)

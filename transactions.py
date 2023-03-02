@@ -28,7 +28,7 @@ class Transactions(ABC) :
         pass
 
     @abstractclassmethod
-    def deliver_transaction(cls, confirmation_code:str) -> Transaction :
+    def retrieve_transaction(cls, confirmation_code:str) -> Transaction :
         '''Takes a conformation code and returns the corresponding
          transaction object from the LEDGER.'''
         pass
@@ -82,7 +82,7 @@ class CustomerTransactions(Transactions) :
         return cls._record_transaction(transaction_id, receipt)
 
     @classmethod
-    def deliver_transaction(cls, confirmation_code:str) -> CustomerTransaction: 
+    def retrieve_transaction(cls, confirmation_code:str) -> CustomerTransaction: 
         '''Identifies which object to grab out of the LEDGER based soley on the
         confirmation id which was coded into the confirmation code.'''
         key = int(confirmation_code.split('-')[-1])
