@@ -102,7 +102,7 @@ class CustomerTransactions(Transactions) :
         return conf_id
 
     @classmethod
-    def _execute_transaction(cls, account, action, value) -> Transaction :
+    def _execute_transaction(cls, account, action, value) -> CustomerTransaction :
         '''Executes the transaction inline while generating the receipt. 
         The action is being executed here to keep it as close to the record 
         keeping as possible to avoid errors which would cause an action to 
