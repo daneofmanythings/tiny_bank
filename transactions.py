@@ -90,7 +90,7 @@ class CustomerTransactions(Transactions) :
 
     @classmethod
     def _generate_transaction_id(cls) -> int :
-        '''Uses the length of the LEDGER to as the starting point for the
+        '''Uses the length of the LEDGER as the starting point for the
         ID. Increments to avoid collisions.'''
         conf_id = len(cls.LEDGER)
         while True :
@@ -103,10 +103,10 @@ class CustomerTransactions(Transactions) :
 
     @classmethod
     def _execute_transaction(cls, account, action, value) -> Transaction :
-        '''Generates the confirmation id and executes the transaction inline with
-        generating the receipt. The action is being executed here to keep it as close 
-        to the record keeping as possible to avoid errors which would cause an
-        action to be executed but not recorded.'''
+        '''Executes the transaction inline while generating the receipt. 
+        The action is being executed here to keep it as close to the record 
+        keeping as possible to avoid errors which would cause an action to 
+        be executed but not recorded.'''
         return CustomerTransaction(
             action(value),  # <- Actual operation updating account happens here
             value,
