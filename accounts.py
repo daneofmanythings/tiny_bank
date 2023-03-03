@@ -1,5 +1,6 @@
 from datetime import timezone, timedelta
-from transactions import CustomerTransactions, CustActions
+from customertransactions import CustomerTransactions
+from constants import CustActions
 
 
 class CustomerAccounts :
@@ -29,11 +30,7 @@ class CustomerAccounts :
             raise ValueError('Interest must be a non-negative float')
 
 
-class CustomerAccount :
-
-    ACCOUNTS:CustomerAccounts = CustomerAccounts()
-    TRANSACTIONS:CustomerTransactions = CustomerTransactions()
-    
+class CustomerAccount :   
     
     def __init__(self, acc_num, first_name, last_name, balance=0, tz=(0, 'UTC')) :
         self._acc_num = acc_num
@@ -42,7 +39,7 @@ class CustomerAccount :
         self.last_name = last_name
         self.timezone = tz
 
-        self.ACCOUNTS.add_account(self)
+        CustomerAccounts.add_account(self)
 
     @property
     def account_num(self) :
@@ -115,4 +112,4 @@ class CustomerAccount :
             CustActions.INTEREST: self._interest,
         }
         action = operations[CustActions_enum]
-        return self.TRANSACTIONS.process_transaction(self, action, value)
+        return CustomerTransactions.process_transaction(self, action, value)
