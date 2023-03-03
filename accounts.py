@@ -108,11 +108,11 @@ class CustomerAccount :
         else :
             return CustActions.DECLINED.value
         
-    def transaction(self, transaction_type, value) -> None:
+    def transaction(self, CustActions_enum, value) -> None:
         operations = {
             CustActions.DEPOSIT: self._deposit,
             CustActions.WITHDRAW: self._withdraw,
             CustActions.INTEREST: self._interest,
         }
-        action = operations[transaction_type]
+        action = operations[CustActions_enum]
         return self.TRANSACTIONS.process_transaction(self, action, value)
