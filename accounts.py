@@ -5,7 +5,8 @@ class Account(ABC) :
     def transaction(self, enum, value) -> str :
         '''Takes an enum corresponding to an instance method
         that handes that specific transaction logic for the value.
-        Returns a confirmation code as a string.'''
+        Returns a confirmation code as a string. Should hand off
+        responsibilty to whatever is responsible for handling transactions.'''
         pass
 
 class Accounts(ABC) :
