@@ -1,5 +1,7 @@
-from transactions import Transaction, Transactions
+from transactions.transactions import Transaction, Transactions
 from datetime import datetime
+
+__all__ = ['CustomerTransaction', 'CustomerTransactions']
 
 
 class CustomerTransaction(Transaction) :
@@ -23,7 +25,7 @@ class CustomerTransaction(Transaction) :
 
 
 class CustomerTransactions(Transactions) :
-    LEDGER:dict[int:Transaction] = dict()
+    LEDGER = dict()#:dict[int:Transaction] = dict()
 
     @classmethod
     def process_transaction(cls, account, action, value) -> str :
@@ -77,13 +79,13 @@ class CustomerTransactions(Transactions) :
         return '{}-{}-{}-{}'.format(
             transaction.transaction_code,
             transaction.account_number,
-            date_to_str(transaction.time_utc),
+            _date_to_str(transaction.time_utc),
             transaction_id,
         )
     
 # HELPER FUNCTION
 
-def date_to_str(date:datetime) -> str :
+def _date_to_str(date:datetime) -> str :
     chars = '- :'
     date_str = str(date).split('.')[0]
     for char in chars :

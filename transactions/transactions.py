@@ -1,5 +1,7 @@
 from abc import ABC, abstractclassmethod
 
+__all__ = ['Transaction', 'Transactions']
+
 
 class Transaction(ABC) :
     '''Contains relevant information to record a Transaction.'''
