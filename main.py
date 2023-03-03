@@ -1,5 +1,5 @@
-from accounts import CustomerAccount, CustomerAccounts
-from customertransactions import CustomerTransactions
+from accounts_customer import CustomerAccount, CustomerAccounts
+from transactions_customer import CustomerTransactions
 from constants import CustActions
 
 WITHDRAW = CustActions.WITHDRAW

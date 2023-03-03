@@ -1,5 +1,5 @@
 from datetime import timezone, timedelta
-from customertransactions import CustomerTransactions
+from transactions_customer import CustomerTransactions
 from constants import CustActions
 
 
@@ -105,7 +105,7 @@ class CustomerAccount :
         else :
             return CustActions.DECLINED.value
         
-    def transaction(self, CustActions_enum, value) -> None:
+    def transaction(self, CustActions_enum, value) -> str:
         operations = {
             CustActions.DEPOSIT: self._deposit,
             CustActions.WITHDRAW: self._withdraw,
